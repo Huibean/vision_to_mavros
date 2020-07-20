@@ -248,7 +248,10 @@ def send_vision_position_estimate_message():
                                             cov_twist, 0, 0,
                                                cov_twist, 0,
                                                   cov_twist])
-
+            
+            if reset_counter > 255:
+                reset_counter = 1
+                
             # Setup the message to be sent
             msg = vehicle.message_factory.vision_position_estimate_encode(
                 current_time_us,            # us Timestamp (UNIX time or time since system boot)
